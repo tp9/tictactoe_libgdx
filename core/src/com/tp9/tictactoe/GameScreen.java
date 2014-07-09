@@ -12,8 +12,10 @@ public class GameScreen implements Screen {
 //	static Tile[] TILES = new Tile[9];
 	static int TILE_SPACING = 96;
 	static int BOARDSIZE = 3;
-	static int XMARGIN = (Gdx.graphics.getWidth() - (BOARDSIZE * TILESIZE)) / 2;
-	static int YMARGIN = (Gdx.graphics.getHeight() - (BOARDSIZE * TILESIZE)) / 2;
+	static int BOARDWIDTH = Gdx.graphics.getWidth();
+	static int BOARDHEIGHT = Gdx.graphics.getHeight();
+	static int XMARGIN = (BOARDWIDTH - (BOARDSIZE * TILESIZE)) / 2;
+	static int YMARGIN = (BOARDHEIGHT - (BOARDSIZE * TILESIZE)) / 2;
 	
 	ShapeType line;
 	boolean active = false;
@@ -21,7 +23,6 @@ public class GameScreen implements Screen {
 	public GameScreen(final TicTacToe gam) {
 		game = gam;
 //		loadTiles();
-		drawBoard();
 	}
 
 	@Override
@@ -29,10 +30,10 @@ public class GameScreen implements Screen {
 		game.shapeRenderer.begin(ShapeType.Line);
 		
 		for (int ypos = 1; ypos < BOARDSIZE; ypos++) {
-			game.shapeRenderer.line(XMARGIN, YMARGIN + ypos * TILESIZE, Gdx.graphics.getWidth() - XMARGIN, YMARGIN + ypos * TILESIZE);
+			game.shapeRenderer.line(XMARGIN, YMARGIN + ypos * TILESIZE, BOARDWIDTH - XMARGIN, YMARGIN + ypos * TILESIZE);
 		}
 		for (int xpos = 1; xpos < BOARDSIZE; xpos++) {
-			game.shapeRenderer.line(XMARGIN + xpos * TILESIZE, YMARGIN, XMARGIN + xpos * TILESIZE, Gdx.graphics.getHeight() - YMARGIN);
+			game.shapeRenderer.line(XMARGIN + xpos * TILESIZE, YMARGIN, XMARGIN + xpos * TILESIZE, BOARDHEIGHT - YMARGIN);
 		}
 		
 		game.shapeRenderer.end();
@@ -48,10 +49,6 @@ public class GameScreen implements Screen {
 //		}
 //	}
 	
-	public void drawBoard() {
-		
-	}
-
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub

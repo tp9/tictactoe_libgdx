@@ -19,4 +19,9 @@ public class TicTacToe extends Game {
 	public void render () {
 		super.render();
 	}
+	
+	@Override
+	public void dispose() {
+		shapeRenderer.dispose();
+	}
 }
