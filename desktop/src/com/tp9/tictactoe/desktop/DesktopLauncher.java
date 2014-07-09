@@ -7,6 +7,7 @@ import com.tp9.tictactoe.TicTacToe;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.resizable = false;
 		new LwjglApplication(new TicTacToe(), config);
 	}
 }
