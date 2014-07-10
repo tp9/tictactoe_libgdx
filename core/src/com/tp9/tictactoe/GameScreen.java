@@ -3,14 +3,13 @@ package com.tp9.tictactoe;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.Vector3;
 
 public class GameScreen implements Screen {
 	
 	final TicTacToe game;
 	
 	static int TILESIZE = 96;
-//	static Tile[] TILES = new Tile[9];
-	static int TILE_SPACING = 96;
 	static int BOARDSIZE = 3;
 	static int BOARDWIDTH = Gdx.graphics.getWidth();
 	static int BOARDHEIGHT = Gdx.graphics.getHeight();
@@ -19,10 +18,12 @@ public class GameScreen implements Screen {
 	
 	ShapeType line;
 	boolean active = false;
+	Tile[][] squares = new Tile[3][3];
+
 	
 	public GameScreen(final TicTacToe gam) {
 		game = gam;
-//		loadTiles();
+		loadSquares();
 	}
 
 	@Override
@@ -37,17 +38,20 @@ public class GameScreen implements Screen {
 		}
 		
 		game.shapeRenderer.end();
+		
+		if (Gdx.input.isTouched()) {
+			Vector3 touchPos = new Vector3();
+			touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+		}
 	}
 	
-//	public void loadTiles() {
-//		int tile = 0;
-//		for (int i = 0; i < TILES.length / 3; i++) {
-//			for (int j = 0; j < TILES.length / 3; j++) {
-//				TILES[tile] = new Tile(i * this.TILE_SPACING, j * this.TILE_SPACING, this.WIDTH, this.HEIGHT, this);
-//				tile++;
-//			}
-//		}
-//	}
+	public void loadSquares() {
+		for (int i = 0; i < squares.length; i++) {
+			for (int j = 0; j < squares[i].length; j++) {
+				squares[i][j] = '\u0000';
+			}
+		}
+	}
 	
 	@Override
 	public void resize(int width, int height) {
