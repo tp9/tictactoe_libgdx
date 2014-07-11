@@ -1,16 +1,19 @@
 package com.tp9.tictactoe;
 
-public class Tile {
+import com.badlogic.gdx.math.Rectangle;
 
-	public int x, y, width, height;
+public class Tile extends Rectangle {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public enum State {FREE, X, O};
 	public State tileState;
 	
-	public Tile(int x, int y, int width, int height) {
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+	public Tile(float x, float y, float width, float height) {
+		super(x, y, width, height);
 		this.tileState = State.FREE;
 	}
 
