@@ -17,4 +17,16 @@ public class Tile extends Rectangle {
 		this.tileState = State.FREE;
 	}
 
+	public String getTileState() {
+		String tileStateChar = "";
+		switch (this.tileState) {
+			case X: tileStateChar = "X";
+				break;
+			case O: tileStateChar = "O";
+				break;
+			default: tileStateChar = "";
+				break;
+		}
+		return tileStateChar;
+	}
 }
