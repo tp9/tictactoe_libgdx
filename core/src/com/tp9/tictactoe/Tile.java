@@ -29,4 +29,8 @@ public class Tile extends Rectangle {
 		}
 		return tileStateChar;
 	}
+	
+	public void setTileState(State s) {
+		this.tileState = s;
+	}
 }
