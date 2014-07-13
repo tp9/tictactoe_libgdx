@@ -55,7 +55,7 @@ public class GameScreen implements Screen {
 			for (int x = 0; x < squares[y].length; x++) {
 				squares[y][x].getCenter(centerCoord);
 				leftPos = (centerCoord.x + squares[y][x].getX()) / 2;
-				topPos = (centerCoord.y + (squares[y][x].getY() + TILESIZE)) / 2;
+				topPos = Gdx.graphics.getHeight() - ((centerCoord.y + squares[y][x].getY()) / 2);
 				
 				font.draw(game.batch, squares[y][x].getTileState(), leftPos, topPos);
 			}
@@ -80,7 +80,7 @@ public class GameScreen implements Screen {
 	
 	public void loadSquares() {
 		float xcoord, ycoord;
-		for (int y = 0; y < squares.length; y++) {
+		for (int y = squares.length - 1; y >= 0; y--) {
 			for (int x = 0; x < squares[y].length; x++) {
 				xcoord = XMARGIN + (x * TILESIZE);
 				ycoord = YMARGIN + (y * TILESIZE);
