@@ -80,7 +80,7 @@ public class GameScreen implements Screen {
 	
 	public void loadSquares() {
 		float xcoord, ycoord;
-		for (int y = squares.length - 1; y >= 0; y--) {
+		for (int y = 0; y < squares.length; y++) {
 			for (int x = 0; x < squares[y].length; x++) {
 				xcoord = XMARGIN + (x * TILESIZE);
 				ycoord = YMARGIN + (y * TILESIZE);
