@@ -1,6 +1,7 @@
 package com.tp9.tictactoe;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
@@ -14,6 +15,8 @@ public class TicTacToe extends Game {
 	public void create () {
 		shapeRenderer = new ShapeRenderer();
 		batch = new SpriteBatch();
+		Gdx.graphics.setContinuousRendering(false);
+		Gdx.graphics.requestRendering();
 		this.setScreen(new GameScreen(this));
 	}
 
